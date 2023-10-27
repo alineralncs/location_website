@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Geolocalização do Navegador</title>
+    <style>
+        body {
+            font-family: 'Poppins', sans-serif; /* Fonte "Poppins" */
+            background-color: #ffccc; /* Cor de fundo rosa pastel */
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+        }
+
+        h1 {
+            color: #ff66b2; /* Rosa pastel */
+        }
+
+        p {
+            color: black; /* Rosa pastel */
+        }
+
+        button {
+            background-color: #ff66b2; /* Rosa pastel */
+            color: #fff;
+            border: none;
+            padding: 10px 20px;
+            margin-top: 10px;
+            cursor: pointer;
+            border-radius: 10px;
+        }
+
+        button:hover {
+            background-color: #ff3385; /* Rosa pastel mais escuro ao passar o mouse */
+        }
+
+        #localizacao {
+            margin-top: 20px;
+            font-weight: bold;
+            font-size: 16px;
+        }
+    </style>
+</head>
+<body>
+    <h1>Geolocalização do Navegador</h1>
+    <p>Este exemplo obtém a localização do seu dispositivo.</p>
+
+    <button id="obter-localizacao">Obter Localização</button>
+
+    <p id="localizacao"></p>
+
+    <script>
+        // Verifique se a API de geolocalização é suportada no navegador.
+        if ("geolocation" in navigator) {
+            const obterLocalizacaoBtn = document.getElementById("obter-localizacao");
+            const localizacaoInfo = document.getElementById("localizacao");
+
+            obterLocalizacaoBtn.addEventListener("click", () => {
+                // Solicitar a localização atual do usuário.
+                navigator.geolocation.getCurrentPosition(function(position) {
+                    const latitude = position.coords.latitude;
+                    const longitude = position.coords.longitude;
+                    localizacaoInfo.textContent = `Latitude: ${latitude}, Longitude: ${longitude}`;
+                }, function(error) {
+                    localizacaoInfo.textContent = `Erro ao obter a localização: ${error.message}`;
+                });
+            });
+        } else {
+            console.log("Geolocalização não é suportada pelo navegador.");
+        }
+    </script>
+</body>
+</html>
