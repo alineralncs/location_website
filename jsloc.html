@@ -52,13 +52,13 @@
     <p id="localizacao"></p>
 
     <script>
-        // Verifique se a API de geolocalização é suportada no navegador.
+  
         if ("geolocation" in navigator) {
             const obterLocalizacaoBtn = document.getElementById("obter-localizacao");
             const localizacaoInfo = document.getElementById("localizacao");
 
             obterLocalizacaoBtn.addEventListener("click", () => {
-                // Solicitar a localização atual do usuário.
+            
                 navigator.geolocation.getCurrentPosition(function(position) {
                     const latitude = position.coords.latitude;
                     const longitude = position.coords.longitude;
